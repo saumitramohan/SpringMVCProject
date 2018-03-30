@@ -1,4 +1,6 @@
 package com.springmvc.businessobject;
+import java.util.Map;
+
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,11 +15,13 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping ("/SpringWorld")
 public class HelloController{
 
-	@RequestMapping ("/welcome/{username}")
-	protected ModelAndView helloWorld(@PathVariable ("username") String name) {
+	@RequestMapping ("/{country}/{username}")
+	protected ModelAndView helloWorld(@PathVariable Map <String, String> pathVariable) {
 		// TODO Auto-generated method stub
+		String name = pathVariable.get("username");
+		String country = pathVariable.get("country");
 		ModelAndView modelandview = new ModelAndView("HelloPage");
-		modelandview.addObject("welcomeMessage","Hi "+ name +", Welcome to SpringMVC application");
+		modelandview.addObject("welcomeMessage","Hi "+ name +" , "+ country +" , Welcome to SpringMVC application");
 		return modelandview;
 	}
 	
