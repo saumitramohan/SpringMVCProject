@@ -1,6 +1,7 @@
 package com.springmvc.businesscontroller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,8 +29,14 @@ public class StudentAdmissionController {
 //		
 //	}
 	
+	// AutoDataBinding
 	@RequestMapping (value = "/submitAdmissionForm.html", method = RequestMethod.POST)
-	public ModelAndView submitAdmissionForm(@ModelAttribute ("student") Student student) {
+	public ModelAndView submitAdmissionForm(@ModelAttribute ("student") Student student, BindingResult result) {
+		if (result.hasErrors()) {
+			System.out.println("Errors :"+result.getAllErrors());
+			ModelAndView model = new ModelAndView("AdmissionForm");
+			return model;
+		}
 		ModelAndView model = new ModelAndView("AdmissionSuccess");
 		model.addObject("headerMsg","University of California, Irvine - Tutorial");
 		return model;

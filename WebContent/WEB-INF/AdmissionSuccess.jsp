@@ -19,6 +19,33 @@
 			<td> Student Grade : </td>
 			<td> ${student.getStudentGrade()}</td>
 		</tr>
+		<tr>
+			<td> Student Mobile Number : </td>
+			<td> ${student.getStudentMobile()}</td>
+		</tr>
+		<tr>
+			<td> Student DOB  : </td>
+			<td> ${student.getDOB()}</td>
+		</tr>
+		<tr>
+			<td> Student Skills  : </td>
+			<td> ${student.studentSkills}</td>
+		</tr>
+		<tr>
+			<td> Student address - </td> 
+		</tr>
+		<tr>
+			<td> Country :  ${student.studentAddress.country}</td>
+		</tr>
+		<tr>
+			<td> City :     ${student.studentAddress.city}</td>
+		</tr>
+		<tr>
+			<td> Street :   ${student.studentAddress.street}</td>
+		</tr>
+		<tr>
+			<td> Pincode :  ${student.studentAddress.pincode}</td>
+		</tr>
 	</table>
 </body>
 </html>
