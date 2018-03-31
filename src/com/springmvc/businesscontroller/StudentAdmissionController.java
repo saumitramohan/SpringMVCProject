@@ -9,7 +9,6 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,20 +20,20 @@ import com.spring.businessObject.Student;
 
 @Controller
 public class StudentAdmissionController {
-	
+
 	// Basic example of data binding
 	// Spring uses property editor to internally bind the data
 	// Type conversion
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		//binder.setDisallowedFields(new String[] {"studentMobile"});
+		// binder.setDisallowedFields(new String[] {"studentMobile"});
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		binder.registerCustomEditor(Date.class, "DOB", new CustomDateEditor(dateFormat, false));
-		binder.registerCustomEditor(String.class,"studentName", new StudentNamePropertyEditor());
+		binder.registerCustomEditor(String.class, "studentName", new StudentNamePropertyEditor());
 	}
-	
-	@RequestMapping (value = "/admissionForm.html", method = RequestMethod.GET)
-	public ModelAndView getAdmissionForm() throws Exception{
+
+	@RequestMapping(value = "/admissionForm.html", method = RequestMethod.GET)
+	public ModelAndView getAdmissionForm() throws Exception {
 		String NPE = "NULL";
 		if (NPE.equalsIgnoreCase("NULL")) {
 			throw new NullPointerException();
@@ -42,35 +41,31 @@ public class StudentAdmissionController {
 		ModelAndView model = new ModelAndView("AdmissionForm");
 		return model;
 	}
-	
-//	@RequestMapping (value = "/submitAdmissionForm.html", method = RequestMethod.POST)
-//	public ModelAndView submitAdmissionForm(@RequestParam (value = "studentName", defaultValue = "Saumitra") String name, @RequestParam ("studentGrade") String grade) {
-//		Student student = new Student(name,grade);
-//		ModelAndView model = new ModelAndView("AdmissionSuccess");
-//		model.addObject("headerMsg","University of California, Irvine - Tutorial");
-//		model.addObject("student", student);
-//		return model;
-//		
-//	}
-	
+
+	// @RequestMapping (value = "/submitAdmissionForm.html", method =
+	// RequestMethod.POST)
+	// public ModelAndView submitAdmissionForm(@RequestParam (value = "studentName",
+	// defaultValue = "Saumitra") String name, @RequestParam ("studentGrade") String
+	// grade) {
+	// Student student = new Student(name,grade);
+	// ModelAndView model = new ModelAndView("AdmissionSuccess");
+	// model.addObject("headerMsg","University of California, Irvine - Tutorial");
+	// model.addObject("student", student);
+	// return model;
+	//
+	// }
+
 	// AutoDataBinding
-	@RequestMapping (value = "/submitAdmissionForm.html", method = RequestMethod.POST)
-	public ModelAndView submitAdmissionForm(@Valid @ModelAttribute ("student") Student student, BindingResult result) {
+	@RequestMapping(value = "/submitAdmissionForm.html", method = RequestMethod.POST)
+	public ModelAndView submitAdmissionForm(@Valid @ModelAttribute("student") Student student, BindingResult result) {
 		if (result.hasErrors()) {
-			System.out.println("Errors :"+result.getAllErrors());
+			System.out.println("Errors :" + result.getAllErrors());
 			ModelAndView model = new ModelAndView("AdmissionForm");
 			return model;
 		}
 		ModelAndView model = new ModelAndView("AdmissionSuccess");
-		model.addObject("headerMsg","University of California, Irvine - Tutorial");
+		model.addObject("headerMsg", "University of California, Irvine - Tutorial");
 		return model;
-		
-	}
-	
-	@ExceptionHandler (value = Exception.class)
-	public String handleNullPointerException (Exception e) {
-		System.out.println("Null Pointer exception occured");
-		return "NullPointerException";
-	}
 
+	}
 }
