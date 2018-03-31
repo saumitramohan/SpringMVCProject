@@ -29,7 +29,7 @@
       	</property>
    </bean>
    
-   <bean id = "messageSource" class = "org.springframework.context.support.ReloadableResourceBundleMessageSource">
+   <!-- <bean id = "messageSource" class = "org.springframework.context.support.ReloadableResourceBundleMessageSource">
    	<property name = "basename" value = "/WEB-INF/studentmessage" />
    	</bean>
    	
@@ -44,6 +44,6 @@
    		
    		<property name = "warnLogCategory" value = "MVCLogger" />
    		
-   		</bean>
+   		</bean> -->
    
 </beans>
