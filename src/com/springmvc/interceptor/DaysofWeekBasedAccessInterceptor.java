@@ -5,6 +5,7 @@ import java.util.Calendar;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class DaysofWeekBasedAccessInterceptor extends HandlerInterceptorAdapter {
@@ -22,4 +23,13 @@ public class DaysofWeekBasedAccessInterceptor extends HandlerInterceptorAdapter 
 		return true;
 	}
 
+	@Override
+	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView model) throws Exception{
+		System.out.println(" Handler Interceptor-  Spring MVC called for postCompletion"+request.getRequestURI().toString());
+	}
+	
+	@Override
+	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception{
+		System.out.println(" Handler Interceptor-  Spring MVC called for after completion"+request.getRequestURI().toString());
+	}
 }

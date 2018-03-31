@@ -15,7 +15,10 @@
 	<mvc:annotation-driven />
 	
 	<mvc:interceptors>
-		<bean class="com.springmvc.interceptor.DaysofWeekBasedAccessInterceptor" />
+		<mvc:interceptor>
+				<mvc:mapping path="/admissionForm.html">
+				<bean class="com.springmvc.interceptor.DaysofWeekBasedAccessInterceptor" />
+		</mvc:interceptor>
 	</mvc:interceptors>
 
    <bean id = "viewResolver"  class = "org.springframework.web.servlet.view.InternalResourceViewResolver">
