@@ -32,5 +32,18 @@
    <bean id = "messageSource" class = "org.springframework.context.support.ReloadableResourceBundleMessageSource">
    	<property name = "basename" value = "/WEB-INF/studentmessage" />
    	</bean>
+   	
+   	<bean id = "simpleMappingExceptionResolver" class = "org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+   		<property name = "exceptionMapping">
+   			<map>
+   				<entry key = "NullPointerException" value = "NullPointerException" />
+   			</map>
+   		</property>
+   		 
+   		<property name = "defaultErrorView" value = "Exception" />
+   		
+   		<property name = "warnLogCategory" value = "MVCLogger" />
+   		
+   		</bean>
    
 </beans>
