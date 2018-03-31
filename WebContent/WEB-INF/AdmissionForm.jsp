@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Student Admission Form</title>
+<title>Student Information Form, University of California - Irvine</title>
 </head>
 
 <body>
@@ -20,8 +20,8 @@
 			</tr>
 
 			<tr>
-				<td>Student's Grade</td>
-				<td><input type="text" name="studentGrade" /></td>
+				<td>Student's Hobby</td>
+				<td><input type="text" name="studentHobby" /></td>
 			</tr>
 
 			<tr>

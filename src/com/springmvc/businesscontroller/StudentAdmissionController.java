@@ -3,6 +3,8 @@ package com.springmvc.businesscontroller;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springmvc.propertyeditor.StudentNamePropertyEditor;
 
 import com.spring.businessObject.Student;
 
@@ -23,9 +26,10 @@ public class StudentAdmissionController {
 	// Type conversion
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		binder.setDisallowedFields(new String[] {"studentMobile"});
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy---MM---dd");
+		//binder.setDisallowedFields(new String[] {"studentMobile"});
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		binder.registerCustomEditor(Date.class, "DOB", new CustomDateEditor(dateFormat, false));
+		binder.registerCustomEditor(String.class,"studentName", new StudentNamePropertyEditor());
 	}
 	
 	@RequestMapping (value = "/admissionForm.html", method = RequestMethod.GET)
@@ -46,7 +50,7 @@ public class StudentAdmissionController {
 	
 	// AutoDataBinding
 	@RequestMapping (value = "/submitAdmissionForm.html", method = RequestMethod.POST)
-	public ModelAndView submitAdmissionForm(@ModelAttribute ("student") Student student, BindingResult result) {
+	public ModelAndView submitAdmissionForm(@Valid @ModelAttribute ("student") Student student, BindingResult result) {
 		if (result.hasErrors()) {
 			System.out.println("Errors :"+result.getAllErrors());
 			ModelAndView model = new ModelAndView("AdmissionForm");

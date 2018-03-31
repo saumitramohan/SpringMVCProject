@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<h1>Student Grade Display Form :: ${headerMsg}</h1>
+	<h1>Student Information Display Form :: ${headerMsg}</h1>
 	<p>Details submitted by you</p>
 	<table>
 		<tr>
@@ -16,8 +16,8 @@
 			<td>${student.getStudentName()}</td>
 		</tr>
 		<tr>
-			<td> Student Grade : </td>
-			<td> ${student.getStudentGrade()}</td>
+			<td> Student Hobby : </td>
+			<td> ${student.getStudentHobby()}</td>
 		</tr>
 		<tr>
 			<td> Student Mobile Number : </td>
@@ -32,19 +32,13 @@
 			<td> ${student.studentSkills}</td>
 		</tr>
 		<tr>
-			<td> Student address - </td> 
+			<td> Student address</td> 
 		</tr>
 		<tr>
-			<td> Country :  ${student.studentAddress.country}</td>
-		</tr>
-		<tr>
-			<td> City :     ${student.studentAddress.city}</td>
-		</tr>
-		<tr>
-			<td> Street :   ${student.studentAddress.street}</td>
-		</tr>
-		<tr>
-			<td> Pincode :  ${student.studentAddress.pincode}</td>
+			<td>	Country :  ${student.studentAddress.country}</td>
+			<td>	City :     ${student.studentAddress.city} </td>
+			<td>	Street :   ${student.studentAddress.street}</td>
+			<td>	Pincode :  ${student.studentAddress.pincode}</td>
 		</tr>
 	</table>
 </body>
