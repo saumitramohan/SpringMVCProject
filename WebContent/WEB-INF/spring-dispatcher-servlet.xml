@@ -13,6 +13,10 @@
 <context:component-scan base-package="com.springmvc.businesscontroller" />
 
 	<mvc:annotation-driven />
+	
+	<mvc:interceptors>
+		<bean class="com.springmvc.interceptor.DaysofWeekBasedAccessInterceptor" />
+	</mvc:interceptors>
 
    <bean id = "viewResolver"  class = "org.springframework.web.servlet.view.InternalResourceViewResolver">
       <property name = "prefix" >
