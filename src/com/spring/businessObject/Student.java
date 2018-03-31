@@ -2,14 +2,18 @@ package com.spring.businessObject;
 
 import java.util.ArrayList;
 import java.util.Date;
-import javax.validation.constraints.Size;
+
+import javax.validation.constraints.*;
 
 public class Student {
-
+	
+	@Pattern (regexp = "[^0-9]*")
 	private String studentName;
 	@Size(min = 2, max = 20, message = "Please enter value between {min} and {max}")
 	private String studentHobby;
+	@Max(1000000000)
 	private Long studentMobile;
+	@Past
 	private Date DOB;
 	private ArrayList<String> studentSkills;
 	private Address studentAddress;
