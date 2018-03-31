@@ -67,7 +67,7 @@ public class StudentAdmissionController {
 		
 	}
 	
-	@ExceptionHandler (value = NullPointerException.class)
+	@ExceptionHandler (value = Exception.class)
 	public String handleNullPointerException (Exception e) {
 		System.out.println("Null Pointer exception occured");
 		return "NullPointerException";
