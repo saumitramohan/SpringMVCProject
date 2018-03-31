@@ -11,12 +11,11 @@
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
         
 <context:component-scan base-package="com.springmvc.businesscontroller" />
-
-	<mvc:annotation-driven />
+<mvc:annotation-driven />
 	
 	<mvc:interceptors>
 		<mvc:interceptor>
-				<mvc:mapping path="/admissionForm.html">
+				<mvc:mapping path="/admissionForm.html"/>
 				<bean class="com.springmvc.interceptor.DaysofWeekBasedAccessInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>

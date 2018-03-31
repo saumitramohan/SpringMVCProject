@@ -9,6 +9,7 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,7 +34,11 @@ public class StudentAdmissionController {
 	}
 	
 	@RequestMapping (value = "/admissionForm.html", method = RequestMethod.GET)
-	public ModelAndView getAdmissionForm() {
+	public ModelAndView getAdmissionForm() throws Exception{
+		String NPE = "NULL";
+		if (NPE.equalsIgnoreCase("NULL")) {
+			throw new NullPointerException();
+		}
 		ModelAndView model = new ModelAndView("AdmissionForm");
 		return model;
 	}
@@ -60,6 +65,12 @@ public class StudentAdmissionController {
 		model.addObject("headerMsg","University of California, Irvine - Tutorial");
 		return model;
 		
+	}
+	
+	@ExceptionHandler (value = NullPointerException.class)
+	public String handleNullPointerException (Exception e) {
+		System.out.println("Null Pointer exception occured");
+		return "NullPointerException";
 	}
 
 }
