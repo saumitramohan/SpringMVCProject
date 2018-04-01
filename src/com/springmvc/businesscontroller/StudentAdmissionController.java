@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -84,8 +85,15 @@ public class StudentAdmissionController {
 		list.add(student1);
 		list.add(student2);
 		list.add(student3);
-		return list;
-
-		
+		return list;	
+	}
+	
+	@ResponseBody
+	@RequestMapping (value = "/student/{name}", method = RequestMethod.GET)
+	public Student getStudentData(@PathVariable ("name") String name){
+		Student student1 = new Student();
+		student1.setStudentName(name);
+		student1.setStudentMobile((long) 187654);
+		return student1;	
 	}
 }
