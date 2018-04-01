@@ -5,14 +5,25 @@ import java.util.Date;
 
 import javax.validation.constraints.*;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonPropertyOrder ({ "studentName", "DOB", "studentHobby", "studentSkills"	
+})
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Student {
-	
-	@Pattern (regexp = "[^0-9]*")
+
+	@Pattern(regexp = "[^0-9]*")
+	@JsonProperty("Student-Name")
 	private String studentName;
+
 	@Size(min = 2, max = 20, message = "Please enter value between {min} and {max}")
 	private String studentHobby;
+
 	@Max(1000000000)
 	private Long studentMobile;
+
 	@Past
 	private Date DOB;
 	private ArrayList<String> studentSkills;
