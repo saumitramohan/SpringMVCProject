@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import org.apache.tomcat.util.http.parser.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,5 +34,14 @@ public class StudentInfoRestController {
 		student1.setStudentName(name);
 		student1.setStudentMobile((long) 187654);
 		return student1;	
+	}
+	
+	@RequestMapping (value = "/student/{name}", method = RequestMethod.PUT)
+	public boolean getStudentData(@PathVariable ("name") String name, @RequestBody Student student){
+		System.out.println("Student name "+ student.getStudentName());
+		System.out.println("Student Hobby "+ student.getStudentHobby());
+		System.out.println("Student DOB "+ student.getDOB());
+		System.out.println("Student Mobile "+ student.getStudentMobile());
+		return true;	
 	}
 }
