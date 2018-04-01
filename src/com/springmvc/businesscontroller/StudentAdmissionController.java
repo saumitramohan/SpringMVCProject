@@ -72,28 +72,5 @@ public class StudentAdmissionController {
 
 	}
 	
-	@ResponseBody
-	@RequestMapping (value = "/student", method = RequestMethod.GET)
-	public ArrayList <Student> getStudentList(){
-		Student student1 = new Student();
-		Student student2 = new Student();
-		Student student3 = new Student();
-		student1.setStudentName("Saumitra");
-		student2.setStudentName("Mohan");
-		student3.setStudentName("Shukla");
-		ArrayList<Student> list = new ArrayList<>();
-		list.add(student1);
-		list.add(student2);
-		list.add(student3);
-		return list;	
-	}
 	
-	@ResponseBody
-	@RequestMapping (value = "/student/{name}", method = RequestMethod.GET)
-	public Student getStudentData(@PathVariable ("name") String name){
-		Student student1 = new Student();
-		student1.setStudentName(name);
-		student1.setStudentMobile((long) 187654);
-		return student1;	
-	}
 }
