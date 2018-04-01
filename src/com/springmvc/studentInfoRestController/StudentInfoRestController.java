@@ -1,5 +1,7 @@
 package com.springmvc.studentInfoRestController;
 import java.util.ArrayList;
+
+import org.apache.tomcat.util.http.parser.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,7 +12,7 @@ import com.spring.businessObject.Student;
 @RestController
 public class StudentInfoRestController {
 
-	@RequestMapping (value = "/student", method = RequestMethod.GET)
+	@RequestMapping (value = "/student", method = RequestMethod.GET, produces = org.springframework.http.MediaType.APPLICATION_XML_VALUE)
 	public ArrayList <Student> getStudentList(){
 		Student student1 = new Student();
 		Student student2 = new Student();
