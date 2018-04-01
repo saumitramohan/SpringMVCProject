@@ -1,7 +1,6 @@
 package com.springmvc.studentInfoRestController;
 import java.util.ArrayList;
-
-import org.apache.tomcat.util.http.parser.MediaType;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,11 +38,26 @@ public class StudentInfoRestController {
 	}
 	
 	@RequestMapping (value = "/student/{name}", method = RequestMethod.PUT, consumes = org.springframework.http.MediaType.APPLICATION_XML_VALUE)
-	public ResponseEntity <Void>  getStudentData(@PathVariable ("name") String name, @RequestBody Student student){
+	public ResponseEntity <Student>  updateStudentData(@PathVariable ("name") String name, @RequestBody Student student){
 		System.out.println("Student name "+ student.getStudentName());
 		System.out.println("Student Hobby "+ student.getStudentHobby());
 		System.out.println("Student DOB "+ student.getDOB());
 		System.out.println("Student Mobile "+ student.getStudentMobile());
-		return new ResponseEntity(HttpStatus.OK);
+		HttpHeaders header = new HttpHeaders();
+		header.add("HelloKey", "Hello");
+		header.add("Resposne", "Hi");
+		return new ResponseEntity(student,header,HttpStatus.OK);
+	}
+	
+	@RequestMapping (value = "/student", method = RequestMethod.POST, consumes = org.springframework.http.MediaType.APPLICATION_XML_VALUE)
+	public ResponseEntity <Student>  insertStudentData(String name, @RequestBody Student student){
+		System.out.println("Student name "+ student.getStudentName());
+		System.out.println("Student Hobby "+ student.getStudentHobby());
+		System.out.println("Student DOB "+ student.getDOB());
+		System.out.println("Student Mobile "+ student.getStudentMobile());
+		HttpHeaders header = new HttpHeaders();
+		header.add("HelloKey", "Hello");
+		header.add("Resposne", "Hi");
+		return new ResponseEntity(student,header,HttpStatus.OK);
 	}
 }
