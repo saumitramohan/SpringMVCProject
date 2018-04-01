@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.spring.businessObject.Student;
 
@@ -56,8 +57,11 @@ public class StudentInfoRestController {
 		System.out.println("Student DOB "+ student.getDOB());
 		System.out.println("Student Mobile "+ student.getStudentMobile());
 		HttpHeaders header = new HttpHeaders();
-		header.add("HelloKey", "Hello");
-		header.add("Resposne", "Hi");
+		header.add("Location", 
+				ServletUriComponentsBuilder.fromCurrentRequest()
+				.path("/{name}")
+				.buildAndExpand(student.getStudentName())
+				.toUri().toString());
 		return new ResponseEntity(student,header,HttpStatus.CREATED);
 	}
 }
