@@ -58,6 +58,6 @@ public class StudentInfoRestController {
 		HttpHeaders header = new HttpHeaders();
 		header.add("HelloKey", "Hello");
 		header.add("Resposne", "Hi");
-		return new ResponseEntity(student,header,HttpStatus.OK);
+		return new ResponseEntity(student,header,HttpStatus.CREATED);
 	}
 }
