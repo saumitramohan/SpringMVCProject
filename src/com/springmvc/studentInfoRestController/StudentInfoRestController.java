@@ -36,7 +36,7 @@ public class StudentInfoRestController {
 		return student1;	
 	}
 	
-	@RequestMapping (value = "/student/{name}", method = RequestMethod.PUT)
+	@RequestMapping (value = "/student/{name}", method = RequestMethod.PUT, consumes = org.springframework.http.MediaType.APPLICATION_XML_VALUE)
 	public boolean getStudentData(@PathVariable ("name") String name, @RequestBody Student student){
 		System.out.println("Student name "+ student.getStudentName());
 		System.out.println("Student Hobby "+ student.getStudentHobby());
